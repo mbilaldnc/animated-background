@@ -2,11 +2,10 @@ var express = require('express'),
 	app = express();
 
 app.use(express.static('public'));
-app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 	// res.send('GİRİŞ SAYFASI');
-	res.render('index');
+	res.sendFile(__dirname + '/views/index.html');
 });
 
 let port = process.env.PORT;
