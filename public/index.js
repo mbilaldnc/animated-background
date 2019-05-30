@@ -1,4 +1,13 @@
-const backgroundCanvas = document.querySelector('#bg-canvas');
+const backgroundCanvas = document.querySelector('#bg-canvas'),
+	inputDotCount = document.querySelector('#dotCount'),
+	inputDotSize = document.querySelector('#dotSize'),
+	inputVelocityMin = document.querySelector('#velocityMin'),
+	inputVelocityMax = document.querySelector('#velocityMax'),
+	inputDistanceGap = document.querySelector('#distanceGap'),
+	inputLineWidth = document.querySelector('#lineWidth'),
+	inputDotColor = document.querySelector('#dotColor'),
+	inputStrokeColor = document.querySelector('#strokeColor'),
+	buttonApply = document.querySelector('#Apply');
 
 let width = 100,
 	height = 100,
@@ -7,11 +16,10 @@ let width = 100,
 	velocityMin = 1,
 	velocityMax = 2,
 	distanceGap = 100,
-	strokeWidth = 0.2,
+	lineWidth = 1,
 	dotArray = [],
 	dotColor = 'rgb(100,100,200)',
-	strokeColor = 'rgb(150,150,250)',
-	ctx = backgroundCanvas.getContext('2d');
+	strokeColor = 'rgb(150,150,250)';
 
 function setSize() {
 	width = window.innerWidth;
@@ -20,6 +28,19 @@ function setSize() {
 	backgroundCanvas.setAttribute('height', height);
 	ctx = backgroundCanvas.getContext('2d');
 }
+
+buttonApply.addEventListener('click', (event) => {
+	event.preventDefault();
+	dotCount = inputDotCount.value;
+	dotSize = inputDotSize.value;
+	velocityMin = inputVelocityMin.value;
+	velocityMax = inputVelocityMax.value;
+	distanceGap = inputDistanceGap.value;
+	lineWidth = inputLineWidth.value;
+	dotColor = inputDotColor.value;
+	strokeColor = inputStrokeColor.value;
+	restart();
+});
 
 setup();
 function setup() {
@@ -73,7 +94,7 @@ function update() {
 				var distance = Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
 				if (distance < distanceGap) {
 					ctx.strokeStyle = strokeColor;
-					ctx.strokeWidth = strokeWidth;
+					ctx.lineWidth = lineWidth;
 					ctx.lineCap = 'round';
 					ctx.stroke();
 					ctx.moveTo(element.locationX, element.locationY);
@@ -84,6 +105,24 @@ function update() {
 	}
 }
 
-setInterval(() => {
+var updateInterval = setInterval(() => {
 	update();
 }, 16);
+
+function restart() {
+	dotArray = [];
+	clearInterval(updateInterval);
+	setup();
+	updateInterval = setInterval(() => {
+		update();
+	}, 16);
+}
+
+inputDotCount.value = dotCount;
+inputDotSize.value = dotSize;
+inputVelocityMin.value = velocityMin;
+inputVelocityMax.value = velocityMax;
+inputDistanceGap.value = distanceGap;
+inputLineWidth.value = lineWidth;
+inputDotColor.value = dotColor;
+inputStrokeColor.value = strokeColor;

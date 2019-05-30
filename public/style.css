@@ -8,3 +8,36 @@ body {
 	overflow: hidden;
 	display: block;
 }
+
+#variables-div {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: rgba(240, 248, 255, 0.336);
+	padding: 20px;
+	line-height: 40px;
+	width: 220px;
+}
+
+input {
+	position: absolute;
+	left: 120px;
+	margin-top: 10px;
+	width: 100px;
+}
+
+#header-div {
+	position: absolute;
+	top: 0;
+	text-align: center;
+	width: 100%;
+	color: aliceblue;
+}
+
+a {
+	color: bisque;
+}
+
+a:visited {
+	color: aqua;
+}

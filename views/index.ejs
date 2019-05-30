@@ -9,7 +9,30 @@
     <title>PROJECT MOVING BACKGROUND by MBDNC</title>
 </head>
 <body onresize="setSize()">
+    <div id="header-div">
+        <h1>Designed by MBDNC</h1>
+        <h4>Inspired by <a href="https://app.netlify.com/signup" target="_blank">Netlify</a></h4>
+    </div>
     <canvas id="bg-canvas"></canvas>
+    <div id="variables-div">
+        <form action="">
+            <label for="">dotCount:</label> <input type="text" name="" id="dotCount"><br>
+            <label for="">dotSize:</label> <input type="text" name="" id="dotSize"><br>
+            <label for="">distanceGap:</label> <input type="text" name="" id="distanceGap"><br>
+            <label for="">lineWidth:</label> <input type="text" name="" id="lineWidth"><br>
+            <label for="">velocityMin:</label> <input type="text" name="" id="velocityMin"><br>
+            <label for="">velocityMax:</label> <input type="text" name="" id="velocityMax"><br>
+            <label for="">dotColor:</label> <input type="text" name="" id="dotColor"><br>
+            <label for="">strokeColor:</label> <input type="text" name="" id="strokeColor"><br>
+            <button id="Apply" style="float: right;">Apply</button>
+        </form>
+    </div>
     <script src="index.js"></script>
+    <script>
+        if(width<500){
+            document.getElementById("variables-div").style.top="150px";
+        }
+
+    </script>
 </body>
 </html>
